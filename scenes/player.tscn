@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bohvs4alr5c6"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_g3o44"]
+[ext_resource type="Texture2D" uid="uid://bgq515mv4nekh" path="res://assets/asteroids-2x.png" id="1_vjm8x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wcyo"]
+radius = 11.0
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38h2c"]
+atlas = ExtResource("1_vjm8x")
+region = Rect2(192, 256, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bljxd"]
+atlas = ExtResource("1_vjm8x")
+region = Rect2(288, 256, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_msd15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38h2c")
+}],
+"loop": true,
+"name": &"engine_off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bljxd")
+}],
+"loop": true,
+"name": &"engine_on",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_g3o44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -1)
+rotation = 1.5708
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_4wcyo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_msd15")
+animation = &"engine_off"
+autoplay = "engine_off"

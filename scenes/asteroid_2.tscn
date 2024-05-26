@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkarjeyaokesw"]
+
+[ext_resource type="Script" path="res://src/asteroid_2.gd" id="1_radvn"]
+[ext_resource type="Texture2D" uid="uid://bgq515mv4nekh" path="res://assets/asteroids-2x.png" id="2_tgmj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y0bu"]
+atlas = ExtResource("2_tgmj1")
+region = Rect2(0, 160, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpb6d"]
+atlas = ExtResource("2_tgmj1")
+region = Rect2(96, 160, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ou77"]
+atlas = ExtResource("2_tgmj1")
+region = Rect2(192, 160, 96, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cyrtx"]
+radius = 23.0868
+
+[node name="asteroid_2" type="CharacterBody2D" groups=["asteroid"]]
+collision_layer = 2
+script = ExtResource("1_radvn")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 2)
+texture = SubResource("AtlasTexture_2y0bu")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 3)
+texture = SubResource("AtlasTexture_fpb6d")
+
+[node name="Sprite3" type="Sprite2D" parent="."]
+position = Vector2(-1, 3)
+texture = SubResource("AtlasTexture_6ou77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 3)
+shape = SubResource("CircleShape2D_cyrtx")
