@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="OGM35"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+CometsManager="*res://src/manager.gd"
 
 [display]
 

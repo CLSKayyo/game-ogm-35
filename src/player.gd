@@ -40,9 +40,17 @@ func move_ship(delta):
 	)
 	
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var node = get_slide_collision(i).get_collider()
+		if (node.is_in_group("asteroid")):
+			destroy()
 
 func control_animations():
 	if (Input.is_action_pressed("apply_gas")):
 		sprite.animation = "engine_on"
 	else:
 		sprite.animation = "engine_off"
+
+func destroy():
+	CometsManager.go_to_scene("res://scenes/game_over.tscn")

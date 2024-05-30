@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnnscld2xyf8d"]
+
+[ext_resource type="PackedScene" uid="uid://ck627oeiurflx" path="res://scenes/asteroid_1.tscn" id="1_xa2wp"]
+[ext_resource type="PackedScene" uid="uid://bkarjeyaokesw" path="res://scenes/asteroid_2.tscn" id="2_giygk"]
+[ext_resource type="PackedScene" uid="uid://ddry4cg3tf7ru" path="res://scenes/asteroid_3.tscn" id="3_qte2w"]
+[ext_resource type="FontFile" uid="uid://bckhcopcuru1x" path="res://assets/MajorMonoDisplay-Regular.ttf" id="4_nvhkw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3urum"]
+font = ExtResource("4_nvhkw")
+font_size = 35
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7b6e"]
+
+[sub_resource type="GDScript" id="GDScript_1jfya"]
+resource_name = "StartBtn"
+script/source = "extends Button
+
+func _on_pressed():
+	CometsManager.go_to_scene('res://scenes/world.tscn')
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wv25"]
+font = ExtResource("4_nvhkw")
+font_size = 18
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="asteroid_1" parent="Node2D" instance=ExtResource("1_xa2wp")]
+position = Vector2(120, 201)
+
+[node name="asteroid_2" parent="Node2D" instance=ExtResource("2_giygk")]
+position = Vector2(794, 430)
+
+[node name="asteroid_3" parent="Node2D" instance=ExtResource("3_qte2w")]
+position = Vector2(762, 632)
+
+[node name="asteroid_4" parent="Node2D" instance=ExtResource("2_giygk")]
+position = Vector2(983, 199)
+
+[node name="asteroid_5" parent="Node2D" instance=ExtResource("1_xa2wp")]
+position = Vector2(1187, 492)
+
+[node name="asteroid_6" parent="Node2D" instance=ExtResource("3_qte2w")]
+position = Vector2(305, 520)
+
+[node name="asteroid_7" parent="Node2D" instance=ExtResource("3_qte2w")]
+position = Vector2(692, 182)
+
+[node name="asteroid_8" parent="Node2D" instance=ExtResource("1_xa2wp")]
+position = Vector2(7, 573)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Comets: The Game"
+label_settings = SubResource("LabelSettings_3urum")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control2/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="StartBtn" type="Button" parent="VBoxContainer/Control2/HBoxContainer/Control2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_nvhkw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q7b6e")
+text = "Start Game"
+script = SubResource("GDScript_1jfya")
+
+[node name="Control" type="Control" parent="VBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Game Title2" type="Label" parent="VBoxContainer/Control2/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+text = "CONTROLS:
+
+UP - Accel
+DOWN - Brake
+Left/Right - Turn Ship
+Space - Shoot
+
+
+
+
+"
+label_settings = SubResource("LabelSettings_5wv25")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Game Title2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Sprites from Joe Strout"
+label_settings = SubResource("LabelSettings_5wv25")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/Control2/HBoxContainer/Control2/VBoxContainer/StartBtn" to="VBoxContainer/Control2/HBoxContainer/Control2/VBoxContainer/StartBtn" method="_on_pressed"]

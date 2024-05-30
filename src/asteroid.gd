@@ -45,4 +45,5 @@ func damage():
 		destroy()
 
 func destroy():
+	CometsManager.add_score(1)
 	queue_free()

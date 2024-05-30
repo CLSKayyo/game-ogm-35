@@ -35,12 +35,12 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_g3o44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -1)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_4wcyo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

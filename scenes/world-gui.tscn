@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8arfkcrpf725"]
+
+[ext_resource type="FontFile" uid="uid://bckhcopcuru1x" path="res://assets/MajorMonoDisplay-Regular.ttf" id="1_mtwnq"]
+
+[sub_resource type="GDScript" id="GDScript_6qy6w"]
+script/source = "extends Label
+
+func _physics_process(delta):
+	text = str(CometsManager.score)
+"
+
+[node name="World-gui" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_mtwnq")
+theme_override_font_sizes/font_size = 41
+text = "0000"
+horizontal_alignment = 2
+text_direction = 2
+script = SubResource("GDScript_6qy6w")

@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfv08l1ygfcxp"]
+[gd_scene load_steps=5 format=3 uid="uid://dfv08l1ygfcxp"]
 
+[ext_resource type="Script" path="res://src/world_manager.gd" id="1_i5612"]
 [ext_resource type="PackedScene" uid="uid://bohvs4alr5c6" path="res://scenes/player.tscn" id="1_ltpdo"]
 [ext_resource type="PackedScene" uid="uid://ck627oeiurflx" path="res://scenes/asteroid_1.tscn" id="2_hbnwr"]
+[ext_resource type="PackedScene" uid="uid://c8arfkcrpf725" path="res://scenes/world-gui.tscn" id="3_42ase"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_i5612")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ltpdo")]
 position = Vector2(616, 365)
@@ -22,3 +25,5 @@ position = Vector2(815, 519)
 
 [node name="asteroid_5" parent="." instance=ExtResource("2_hbnwr")]
 position = Vector2(661, 195)
+
+[node name="World-gui" parent="." instance=ExtResource("3_42ase")]
